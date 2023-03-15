@@ -2,14 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 29
-    signingConfigs {
-        omarea_Signing {
-            keyAlias 'omarea.com'
-            keyPassword 'asdf1234'
-            storeFile file('D:/omoarea.jks')
-            storePassword 'asdf1234'
-        }
-    }
     defaultConfig {
         resConfigs "zh"
         applicationId "com.omarea.gesture"
