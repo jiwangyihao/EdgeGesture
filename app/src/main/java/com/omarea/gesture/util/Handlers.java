@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.widget.Toast;
+import android.os.PowerManager;
+import android.app.Service;
 
 import com.omarea.gesture.AccessibilityServiceGesture;
 import com.omarea.gesture.ActionModel;
@@ -46,7 +48,12 @@ public class Handlers {
     final public static int CUSTOM_ACTION_QUICK = 1000009;
     final public static int CUSTOM_ACTION_LONGLIGHT = 1000010;
     final public static int OMAREA_FILTER_SCREENSHOT = 1100000;
+    
     private static final boolean isXiaomi = Build.MANUFACTURER.toLowerCase().equals("xiaomi") && (Build.BRAND.toLowerCase().equals("xiaomi") || Build.BRAND.toLowerCase().equals("redmi"));
+    
+    private static final WakeLock wakeLock = (PowerManager)getSystemService(POWER_SERVICE).newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "Gesture::LONGLIGHT");
+    private static boolean hasLock = false;
+    
     private final static ArrayList<ActionModel> options = new ArrayList<ActionModel>() {{
         add(new ActionModel(GLOBAL_ACTION_NONE, "无"));
         add(new ActionModel(GLOBAL_ACTION_BACK, "返回键"));
@@ -179,7 +186,15 @@ public class Handlers {
                 break;
             }
             case CUSTOM_ACTION_LONGLIGHT: {
-                Gesture.toast("屏幕常亮", Toast.LENGTH_SHORT);
+                if (!hasLock) {
+                    Gesture.toast("屏幕常亮已开启", Toast.LENGTH_SHORT);
+                    wakeLock.acquire();
+                    hasLock = !hasLock;
+                } else {
+                    Gesture.toast("屏幕常亮已关闭", Toast.LENGTH_SHORT);
+                    wakeLock.release();
+                    hasLock = !hasLock;
+                }
                 break;
             }
             default: {
