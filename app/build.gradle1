@@ -6,6 +6,14 @@ plugins {
 
 android {
     compileSdk 33
+        signingConfigs {
+            omarea_Signing {
+                keyAlias 'omarea.com'
+                keyPassword 'asdf1234'
+                storeFile file('D:/omoarea.jks')
+                storePassword 'asdf1234'
+            }
+        }
 
     defaultConfig {
         applicationId "top.jwyihao.appconfig"

@@ -116,6 +116,12 @@ public class TouchIconCache {
                     }
                     return touch_switch;
                 }
+                case Handlers.CUSTOM_ACTION_LONGLIGHT: {
+                    if (touch_grid == null && Gesture.context != null) {
+                        touch_grid = BitmapFactory.decodeResource(Gesture.context.getResources(), R.drawable.touch_grid);
+                    }
+                    return touch_grid;
+                }
             }
         }
 
