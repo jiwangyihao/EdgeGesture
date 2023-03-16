@@ -44,6 +44,7 @@ public class Handlers {
     final public static int CUSTOM_ACTION_APP_WINDOW = 1000002;
     final public static int CUSTOM_ACTION_SHELL = 1000006;
     final public static int CUSTOM_ACTION_QUICK = 1000009;
+    final public static int CUSTOM_ACTION_LONGLIGHT = 1000010;
     final public static int OMAREA_FILTER_SCREENSHOT = 1100000;
     private static final boolean isXiaomi = Build.MANUFACTURER.toLowerCase().equals("xiaomi") && (Build.BRAND.toLowerCase().equals("xiaomi") || Build.BRAND.toLowerCase().equals("redmi"));
     private final static ArrayList<ActionModel> options = new ArrayList<ActionModel>() {{
@@ -74,6 +75,7 @@ public class Handlers {
         }
         add(new ActionModel(CUSTOM_ACTION_SHELL, "运行脚本 > "));
         add(new ActionModel(CUSTOM_ACTION_QUICK, "常用应用 > "));
+        add(new ActionModel(CUSTOM_ACTION_LONGLIGHT, "屏幕常亮"));
         add(new ActionModel(OMAREA_FILTER_SCREENSHOT, "屏幕滤镜-正常截图"));
     }};
     private static SharedPreferences configEx;
@@ -174,6 +176,10 @@ public class Handlers {
             }
             case VITUAL_ACTION_MI_HANDY_MODE_2: {
                 RemoteAPI.xiaomiHandymode(2);
+                break;
+            }
+            case CUSTOM_ACTION_LONGLIGHT: {
+                Toast.makeText(context, "屏幕常亮", Toast.LENGTH_SHORT).show();
                 break;
             }
             default: {
