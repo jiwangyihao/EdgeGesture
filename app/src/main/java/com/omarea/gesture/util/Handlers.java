@@ -179,7 +179,7 @@ public class Handlers {
                 break;
             }
             case CUSTOM_ACTION_LONGLIGHT: {
-                Toast.makeText(context, "屏幕常亮", Toast.LENGTH_SHORT).show();
+                Gesture.toast("屏幕常亮", Toast.LENGTH_SHORT);
                 break;
             }
             default: {
