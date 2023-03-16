@@ -51,6 +51,7 @@ public class Handlers {
     
     private static final boolean isXiaomi = Build.MANUFACTURER.toLowerCase().equals("xiaomi") && (Build.BRAND.toLowerCase().equals("xiaomi") || Build.BRAND.toLowerCase().equals("redmi"));
     
+    @Deprecated
     private static final PowerManager.WakeLock wakeLock = (PowerManager)Gesture.context.getSystemService(Service.POWER_SERVICE).newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "Gesture::LONGLIGHT");
     private static boolean hasLock = false;
     
