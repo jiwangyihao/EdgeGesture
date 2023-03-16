@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Gesture</string>
-    <string name="app_name_long">Gesture(手势导航)</string>
+    <string name="app_name">Gesture - 吉</string>
+    <string name="app_name_long">Gesture - 吉(手势导航)</string>
     <string name="accessibility_keyevent_description">
         开启此辅助服务即可体验屏幕边缘手，如需个性化手势功能，请点击界面上的设置按钮。
     </string>
